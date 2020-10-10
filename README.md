@@ -20,17 +20,17 @@
 ---------------------------------------
 ---------------------------------------
 ## items Table
-|Column      |Type     |Options                       |
-|------------|---------|------------------------------|
-|name        |string   |null: false                   |
-|description |text     |null: false                   |
-|category    |integer  |null: false                   |
-|condition   |integer  |null: false                   |
-|delivery_fee|integer  |null: false                   |
-|prefecture  |integer  |null: false                   |
-|lead_time   |integer  |null: false                   |
-|price       |integer  |null: false                   |
-|user_id     |reference|null: false, foreign_key: true|
+|Column         |Type     |Options                       |
+|---------------|---------|------------------------------|
+|name           |string   |null: false                   |
+|description    |text     |null: false                   |
+|category_id    |integer  |null: false                   |
+|condition_id   |integer  |null: false                   |
+|delivery_fee_id|integer  |null: false                   |
+|prefecture_id  |integer  |null: false                   |
+|lead_time_id   |integer  |null: false                   |
+|price          |integer  |null: false                   |
+|user           |reference|null: false, foreign_key: true|
 
 ### Association
 * belongs_to :user
@@ -45,8 +45,8 @@
 ## purchases Table
 |Column    |Type     |Options                       |
 |----------|---------|------------------------------|
-|user_id   |reference|null: false, foreign_key: true|
-|address_id|reference|null: false, foreign_key: true|
+|user      |reference|null: false, foreign_key: true|
+|item      |reference|null: false, foreign_key: true|
 
 ### Association
 * belongs_to :user
@@ -58,12 +58,12 @@
 |Column       |Type     |Options                       |
 |-------------|---------|------------------------------|
 |postal_code  |string   |null: false                   |
-|prefecture   |integer  |null: false                   |
+|prefecture_id|integer  |null: false                   |
 |city         |string   |null: false                   |
 |street_number|string   |null: false                   |
 |building_name|string   |null: false                   |
 |tel_number   |integer  |null: false                   |
-|purchase_id  |reference|null: false, foreign_key: true|
+|purchase     |reference|null: false, foreign_key: true|
 
 ### Association
 * belongs_to :purchase
