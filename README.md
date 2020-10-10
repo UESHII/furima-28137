@@ -61,7 +61,7 @@
 |prefecture_id|integer  |null: false                   |
 |city         |string   |null: false                   |
 |street_number|string   |null: false                   |
-|building_name|string   |null: false                   |
+|building_name|string   |                              |
 |tel_number   |integer  |null: false                   |
 |purchase     |reference|null: false, foreign_key: true|
 
