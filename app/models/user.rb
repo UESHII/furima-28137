@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email
-    validates :encrypted_password
+    validates :encrypted_password, length: { minimum: 6 }, format: { with: /\A(?=.*[a-z])(?=.*[\d])/i, message: "is invalid. Input 6 characters at least, use both of letter and digit."}
     validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
     validates :kana_family_name, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width characters."}
