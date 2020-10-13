@@ -38,7 +38,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include(
           "Password can't be blank",
-          "Password is invalid. Input 6 characters at least, use both of letter and digit.",
+          "Password is invalid. Input 6 characters at least, use both of letter and number.",
           "Password confirmation doesn't match Password"
         )
       end
@@ -91,11 +91,21 @@ describe User do
       end
       it 'パスワードが6文字未満では登録できない' do
         @user.password = "123ab"
+        @user.password_confirmation = @user.password
         @user.valid?
-        expect(@user.errors.full_messages).to include(
-          "Password confirmation doesn't match Password",
-          "Password is too short (minimum is 6 characters)"
-        )
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      end
+      it 'passwordが英字のみだとユーザー登録できない' do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid. Input 6 characters at least, use both of letter and number.")
+      end
+      it 'passwordが数字のみだとユーザー登録できない' do
+        @user.password = "000000"
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid. Input 6 characters at least, use both of letter and number.")
       end
       it 'family_nameが半角だと登録できない' do
         @user.family_name = "ﾔﾏﾀﾞ"

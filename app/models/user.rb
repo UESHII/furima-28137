@@ -11,7 +11,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :email
-    validates :password, format: { with: PASSWORD_REGEX, message: "is invalid. Input 6 characters at least, use both of letter and digit."}
+    validates :password, format: { with: PASSWORD_REGEX, message: "is invalid. Input 6 characters at least, use both of letter and number."}
     validates :family_name, format: { with: NAME_REGEX, message: "is invalid. Input full-width characters."}
     validates :first_name, format: { with: NAME_REGEX, message: "is invalid. Input full-width characters."}
     validates :kana_family_name, format: { with: KANA_NAME_REGEX, message: "is invalid. Input full-width characters."}
