@@ -18,6 +18,10 @@ class Item < ApplicationRecord
     validates :lead_time_id
     validates :price
     validates :user
-    validates :item
+    validates :item, numericality: {
+      greater_than_or_equal_to: 300,
+      less_than: 10000000,
+      message: "is invalid. Input a price between 300 and 9999999."
+    }
   end
 end
