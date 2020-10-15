@@ -31,7 +31,6 @@
 |lead_time_id   |integer   |null: false                   |
 |price          |integer   |null: false                   |
 |user           |references|null: false, foreign_key: true|
-|image          |text      |null: false                   |
 
 ### Association
 * belongs_to :user
