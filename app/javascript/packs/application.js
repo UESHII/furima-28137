@@ -4,7 +4,9 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
+// calculation.jsを読み込むためコメントアウトして無効化
 // require("turbolinks").start()
+
 require("@rails/activestorage").start()
 require("channels")
 require("../calculation")
