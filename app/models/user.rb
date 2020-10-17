@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :items
-  # has_many :purchases
 
   NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
   KANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
