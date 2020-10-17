@@ -23,10 +23,10 @@ class Item < ApplicationRecord
     validates :price, numericality: {
       greater_than_or_equal_to: 300,
       less_than: 10000000,
-      message: "price is invalid. Input a price between 300 and 9999999."
+      message: "is invalid. Input a price between 300 and 9999999."
     }, format: {
       with: /\A[0-9]+\z/,
-      message: "price is invalid. Input half-width numbers."
+      message: "is invalid. Input half-width numbers."
     }
   end
 end
