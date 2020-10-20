@@ -1,7 +1,7 @@
 window.addEventListener ('load', function () {
   const path = location.pathname
 
-  if( "/items/new" === path || "/items" === path ) {
+  if( "/items/new" === path || "/items" === path || path.includes("items" && "edit")) {
     const itemPrice = document.getElementById("item-price")
     const tax = document.getElementById("add-tax-price")
     const profit = document.getElementById("profit")
