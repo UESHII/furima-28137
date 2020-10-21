@@ -124,11 +124,13 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
 
-              <%# 商品が売れていればsold outを表示しましょう ・・・商品購入機能実装後に設定する %>
-              <div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>
-              <%# //商品が売れていればsold outを表示しましょう ・・・商品購入機能実装後に設定する %>
+              <% @purchases.each do |purchase| %>
+                <% if purchase.item_id == item.id %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %> 
+              <% end %>
 
             </div>
             <div class='item-info'>
