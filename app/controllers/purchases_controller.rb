@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create, :edit_restriction, :pay_item, :purchase_address_params]
-  before_action :move_to_index, :edit_restriction
+  before_action :move_to_index, :restriction, only: [:index]
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -8,7 +8,6 @@ class PurchasesController < ApplicationController
   
   def create
     @purchase_address = PurchaseAddress.new(purchase_address_params)
-    binding.pry
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
@@ -30,8 +29,13 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def edit_restriction
-    if current_user.id == @item.user_id
+  def restriction
+    @purchase = Purchase.find_by(item_id: @item.id)
+    if @purchase == nil && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @purchase == nil 
+      
+    elsif @purchase.item_id == @item.id
       redirect_to root_path
     end
   end
