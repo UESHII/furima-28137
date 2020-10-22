@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :create, :restriction, :pay_item, :purchase_address_params]
+  before_action :set_item, only: [:index, :create]
   before_action :restriction, only: [:index, :create]
 
   def index
