@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create, :edit_restriction, :pay_item, :purchase_address_params]
-  before_action :move_to_index, :restriction, only: [:index]
+  before_action :restriction, only: [:index]
+  before_action :authenticate_user!
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -21,12 +22,6 @@ class PurchasesController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to root_path
-    end
   end
 
   def restriction
