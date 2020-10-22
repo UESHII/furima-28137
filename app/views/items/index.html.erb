@@ -124,13 +124,11 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
 
-              <% @purchases.each do |purchase| %>
-                <% if purchase.item_id == item.id %>
+                <% if item.purchase %>
                   <div class='sold-out'>
                     <span>Sold Out!!</span>
                   </div>
-                <% end %> 
-              <% end %>
+                <% end %>
 
             </div>
             <div class='item-info'>

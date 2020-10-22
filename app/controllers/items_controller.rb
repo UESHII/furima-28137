@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchase = Purchase.find_by(item_id: params[:id])
   end
 
   def edit
