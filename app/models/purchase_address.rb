@@ -9,7 +9,7 @@ class PurchaseAddress
     validates :street_number
   end
   validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Input numbers include hyphen(-)."}
-  validates :tel_number, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width numbers without hyphens(-)."}
+  validates :tel_number, format: {with: /\A[0-9]{,11}+\z/, message: "is invalid. Input half-width numbers without hyphens(-)."}
   validates :token, presence: {message: "is invalid. Input correct card informations."}
 
   def save
