@@ -46,5 +46,15 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token is invalid. Input correct card informations.")
     end
+    it '郵便番号が空である場合、登録できないこと' do
+      @purchase_address.postal_code = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Input numbers include hyphen(-).")
+    end
+    it '電話番号か空である場合、登録できないこと' do
+      @purchase_address.tel_number = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Tel number can't be blank")
+    end
   end
 end
