@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
-  before_action :set_item, only: [:index, :create, :edit_restriction, :pay_item, :purchase_address_params]
-  before_action :restriction, only: [:index]
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create, :restriction, :pay_item, :purchase_address_params]
+  before_action :restriction, only: [:index, :create]
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -25,12 +25,7 @@ class PurchasesController < ApplicationController
   end
 
   def restriction
-    @purchase = Purchase.find_by(item_id: @item.id)
-    if @purchase == nil && current_user.id == @item.user_id
-      redirect_to root_path
-    elsif @purchase == nil 
-      
-    elsif @purchase.item_id == @item.id
+    if @item.purchase || @item.user_id == current_user.id
       redirect_to root_path
     end
   end
